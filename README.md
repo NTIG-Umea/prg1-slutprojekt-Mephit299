@@ -27,6 +27,13 @@ kodstil och kodstruktur, systematiskt arbete med fel och problem samt dokumentat
 * Planering. Vad ska du göra, vilka delar betsår programmet av och vilka problem ser du innan du börjar.
 * Dokumentation, se mall för post-mortem
 
+## Vad jag gör
+* Jag tänker gör en clicker med Swing-GUI.
+* Med Swing-GUI göra knappar, platser för vart saker är och hur programet ser ut.
+* Använda en integer för att ha koll på mängden pengar spelaren har. 
+* olika override fungtioner för att få knapparan att göra det jag vill.
+* Fungtionen som användes i animation för att få en timer på atomatisk pengargenerering. 
+
 ## Betygssättning
 Du betygssätts på din planering och beskrivning av vad du ska göra, hur du löser de problem som uppstår, hur bra skrivet 
 ditt program är och hur väl det fungerar samt din dokumentation av projektet (en post-mortem).
