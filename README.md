@@ -30,7 +30,9 @@ kodstil och kodstruktur, systematiskt arbete med fel och problem samt dokumentat
 ## Vad jag gör
 * Jag tänker gör en clicker med Swing-GUI.
 * Med Swing-GUI göra knappar, platser för vart saker är och hur programet ser ut.
-* Använda en integer för att ha koll på mängden pengar spelaren har. 
+* Använda en double för att ha koll på mängden pengar spelaren har. 
+* Att använda knappar och textrutor för att göra uppgraderingarna.
+* det blir flertalet uppgraderingar som är bara öka atomatisk pengargenerering och pengargenerering per klick.
 * olika override fungtioner för att få knapparan att göra det jag vill.
 * Fungtionen som användes i animation för att få en timer på atomatisk pengargenerering. 
 
