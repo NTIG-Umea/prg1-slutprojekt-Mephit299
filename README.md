@@ -52,3 +52,11 @@ v.21 buggfix
 v.22 slutinlämning projekt / Post mortem
 v.23 Presentation och redovisning
 
+
+# logbok
+
+## 2023-05-02 (tidigare bara planering)
+* Börjat med att skriva koden och layout för clickern
+* Försöker göra en fungtion som uppdaterar element när man interagerar med dom.
+
+
