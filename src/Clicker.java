@@ -2,39 +2,54 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Clicker {
+public class Clicker implements Runnable{
     private double moneyAmount = 0;
-    private double moneyGeneration = 0;
+    private double moneyGeneration = 1;
     private double moneyPerClick = 1;
     private JButton button1;
     private JTextArea information;
     private javax.swing.JPanel JPanel;
+    private JTextArea uppgade1;
+    private JButton buyUppgade1;
     private boolean running = false;
     private Thread thread;
 
     public Clicker() {
+        JFrame frame = new JFrame("Clicker");
+        frame.setContentPane(JPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600,800);
+        frame.pack();
+        frame.setVisible(true);
+        setup();
+
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                moneyAmount += moneyPerClick;
+                moneyAmount+= moneyPerClick;
+                setup();
+            }
+        });
+        buyUppgade1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (moneyAmount >=uppgade1.cost){
+                    moneyAmount -= uppgade1.cost;
+                    moneyGeneration += uppgade1.income;
+
+                }
+                else {}
             }
         });
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Clicker");
-        Clicker c = new Clicker();
-        frame.setContentPane(c.JPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600,800);
-        frame.pack();
-        frame.setVisible(true);
-        c.setup();
-        c.start();
-
-
+    Clicker clicker = new Clicker();
+    clicker.start();
+    uppgrade uppgrade1 = new uppgrade(10,1.2,10);
 
     }
+
 
     public void setup(){
         information.setText(
@@ -47,7 +62,7 @@ public class Clicker {
 
     public synchronized void start() {
         running = true;
-        thread = new Thread(this);
+        thread = new Thread((Runnable) this);
         thread.start();
     }
     public synchronized void stop() {
@@ -60,7 +75,7 @@ public class Clicker {
     }
 
     public void run() {
-        double ns = 1000000000.0 / 25.0;
+        double ns = 1000000000.0 / 1.0;
         double delta = 0;
         long lastTime = System.nanoTime();
 
@@ -69,7 +84,8 @@ public class Clicker {
             delta += (now - lastTime) / ns;
             lastTime = now;
             while(delta >= 1) {
-                c.setup();
+                moneyAmount +=moneyGeneration;
+                setup();
                 delta--;
             }
         }

@@ -59,4 +59,8 @@ v.23 Presentation och redovisning
 * Börjat med att skriva koden och layout för clickern
 * Försöker göra en fungtion som uppdaterar element när man interagerar med dom.
 
+## 2023-05-09
+* Atomatisk pengargeneration fungerar nu.
+* Försöker göra en uppgradering som en egen klass (som vi gjorde med kompexa tal)
+
 
