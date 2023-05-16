@@ -9,10 +9,15 @@ public class Clicker implements Runnable{
     private JButton button1;
     private JTextArea information;
     private javax.swing.JPanel JPanel;
-    private JTextArea uppgade1;
+    private JTextArea uppgrade1;
     private JButton buyUppgade1;
+    private JTextArea uppgrade2;
+    private JButton buyUppgrade2;
     private boolean running = false;
     private Thread thread;
+
+    uppgrade uppgradeItem1 = new uppgrade(10,1.2,2);
+    uppgrade uppgradeItem2 = new uppgrade(50,1.4,10);
 
     public Clicker() {
         JFrame frame = new JFrame("Clicker");
@@ -33,12 +38,18 @@ public class Clicker implements Runnable{
         buyUppgade1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (moneyAmount >=uppgade1.cost){
-                    moneyAmount -= uppgade1.cost;
-                    moneyGeneration += uppgade1.income;
-
+                if (moneyAmount >= uppgradeItem1.cost){
+                    uppgraderaClick(uppgradeItem1);
                 }
                 else {}
+            }
+        });
+        buyUppgrade2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(moneyAmount>= uppgradeItem2.cost){
+                    uppgraderaGeneration(uppgradeItem2);
+                }
             }
         });
     }
@@ -46,8 +57,20 @@ public class Clicker implements Runnable{
     public static void main(String[] args) {
     Clicker clicker = new Clicker();
     clicker.start();
-    uppgrade uppgrade1 = new uppgrade(10,1.2,10);
 
+    }
+    public void uppgraderaGeneration(uppgrade uppgradering){
+        moneyAmount -= uppgradering.cost;
+        moneyGeneration += uppgradering.income;
+        uppgradering.cost *= uppgradering.priceIncrese;
+        setup();
+    }
+
+    public void uppgraderaClick(uppgrade uppgradering){
+        moneyAmount -= uppgradering.cost;
+        moneyPerClick += uppgradering.income;
+        uppgradering.cost *= uppgradering.priceIncrese;
+        setup();
     }
 
 
@@ -56,8 +79,9 @@ public class Clicker implements Runnable{
                 "Pengar: " + moneyAmount +
                 "\nPengar pär klick: " + moneyPerClick +
                 "\nPengar pär sekund: " + moneyGeneration
-
                 );
+        uppgrade1.setText("Kostnad: " + uppgradeItem1.cost + "\nÖkar pengar pär klick med:\n2");
+        uppgrade2.setText("Kostnad: " + uppgradeItem2.cost + "\nÖkar pengargeneration med:\n10");
     }
 
     public synchronized void start() {

@@ -64,3 +64,8 @@ v.23 Presentation och redovisning
 * Försöker göra en uppgradering som en egen klass (som vi gjorde med kompexa tal)
 
 
+## 2023-05-16
+* Har faktiskt gjort uppgraderingar.
+* Behöver göra fler uppgraderingar.
+* Behöver gör så att det ser bättre ut.
+
