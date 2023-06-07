@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class Clicker implements Runnable{
     private double moneyAmount = 0;
-    private double moneyGeneration = 1;
+    private double moneyGeneration = 0;
     private double moneyPerClick = 1;
     private JButton button1;
     private JTextArea information;
@@ -13,11 +13,20 @@ public class Clicker implements Runnable{
     private JButton buyUppgade1;
     private JTextArea uppgrade2;
     private JButton buyUppgrade2;
+    private JTextArea uppgrade3;
+    private JButton buyUppgrade3;
+    private JTextArea uppgrade4;
+    private JButton buyUppgrade4;
+    private JTextArea uppgrade5;
+    private JButton buyUppgrade5;
     private boolean running = false;
     private Thread thread;
 
     uppgrade uppgradeItem1 = new uppgrade(10,1.2,2);
     uppgrade uppgradeItem2 = new uppgrade(50,1.4,10);
+    uppgrade uppgradeItem3 = new uppgrade(100,1.4,10);
+    uppgrade uppgradeItem4 = new uppgrade(250,1.4,25);
+    uppgrade uppgradeItem5 = new uppgrade(1000,1.4,50);
 
     public Clicker() {
         JFrame frame = new JFrame("Clicker");
@@ -52,6 +61,30 @@ public class Clicker implements Runnable{
                 }
             }
         });
+        buyUppgrade3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(moneyAmount>= uppgradeItem3.cost){
+                    uppgraderaClick(uppgradeItem3);
+                }
+            }
+        });
+        buyUppgrade4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(moneyAmount>= uppgradeItem4.cost){
+                    uppgraderaGeneration(uppgradeItem4);
+                }
+            }
+        });
+        buyUppgrade5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(moneyAmount>= uppgradeItem5.cost){
+                    uppgraderaGeneration(uppgradeItem5);
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -82,6 +115,9 @@ public class Clicker implements Runnable{
                 );
         uppgrade1.setText("Kostnad: " + uppgradeItem1.cost + "\nÖkar pengar pär klick med:\n2");
         uppgrade2.setText("Kostnad: " + uppgradeItem2.cost + "\nÖkar pengargeneration med:\n10");
+        uppgrade3.setText("Kostnad: " + uppgradeItem3.cost + "\nÖkar pengar pär klick med:\n10");
+        uppgrade4.setText("Kostnad: " + uppgradeItem4.cost + "\nÖkar pengargeneration med:\n25");
+        uppgrade5.setText("Kostnad: " + uppgradeItem5.cost + "\nÖkar pengargeneration med:\n50");
     }
 
     public synchronized void start() {
